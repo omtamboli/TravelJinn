@@ -20,4 +20,4 @@ TravelJinn is a web application that aims to provide users with tourist destinat
 - Database: MongoDB
 
 ## Contact
-For any inquiries or feedback, please reach out to our team at [omtamboli08@gmail.com]
+For any inquiries or feedback, please reach out to our team at [omtamboli08@gmail.com] or [gauravahuja1213@gmail.com]
