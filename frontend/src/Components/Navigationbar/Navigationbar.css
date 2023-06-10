@@ -1,0 +1,101 @@
+
+
+a.logo.icn.nav-link{
+    font-weight: bold;
+    color:black;
+  }
+  a.logo.navbar-brand{
+    color:black;
+  }
+  .navbar {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  /* Custom Navbar Styles */
+  .navbar-nav .nav-link {
+    position: relative;
+  }
+  
+  .navbar-nav .nav-link::before {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid brown;
+    width: 90px;
+    height: 40px;
+    border-radius: 10px; /* Adjust the border-radius to make the border slightly curvy */
+    animation: none; /* Disable the animation for the rectangular border */
+    opacity: 0; /* Hide the border by default */
+    transition: opacity 0.3s; /* Add transition for smooth effect */
+  }
+  
+  .navbar-nav .nav-link:hover::before {
+    opacity: 1; /* Show the border on hover */
+  }
+  
+  .navbar-nav .nav-link:hover .icon-text {
+    animation: blink 0.5s infinite; /* Apply the blinking animation to the text inside the icon */
+    font-weight: bold;
+  }
+  
+  .navbar-brand {
+    margin-right: auto;
+    margin-left: 20px;
+    font-weight: bold;
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  
+  .logo {
+    display: inline-block;
+    transition: transform 0.3s, border-radius 0.3s;
+    font-weight: bold;
+  }
+  
+  .logo:hover {
+    transform: scale(1.2);
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      background-color:rgb(51,0,0) /* Change the background color to brown */
+    }
+    a.logo.icn.nav-link{
+        font-weight: lighter;
+        color:rgb(250, 164, 4);
+      }
+      a.logo.navbar-brand{
+        font-weight: bold;
+        color:rgb(250, 164, 4);
+      }
+    .logo:hover {
+      transform: scale(1);
+    }
+  
+    .navbar-nav .nav-link::before {
+      border: 0;
+      border-radius: 0;
+    }
+  
+    .navbar-nav .nav-link::before {
+      /* Adjust the styles for the rectangle on smaller screens */
+      width: auto;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-25%, -25%);
+      border-radius: 10px; /* Adjust the border-radius to make the border slightly curvy */
+    }
+  
+    .navbar-brand,
+    .navbar-nav {
+      /* Adjust the margin for the logo and navigation on smaller screens */
+      margin: 0 10px;
+    }
+  }

@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '../FlightSearch/FlightSearchForm.css'
 // import Amadeus from 'amadeus';
 import {cityCodes} from '../../Constants/cityCodes'
+import Navigationbar from '../Navigationbar/Navigationbar';
 
 
 const FlightSearchForm = () => {
@@ -56,6 +57,7 @@ const handleSearch = async () => {
     <>
    
     <div className="container">
+    <Navigationbar />
     <h1 className="heading">Select the affordable flights with us!</h1>
       <div className="row justify-content-center">
         <div className="col-lg-6 col-md-8">
