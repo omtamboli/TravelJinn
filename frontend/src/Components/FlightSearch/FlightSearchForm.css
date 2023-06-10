@@ -1,0 +1,154 @@
+form {
+    /* padding: 2rem; */
+}
+   .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .heading {
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    color: #132b56; /* Custom color */
+    animation: glowingEffect 1s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glowingEffect {
+    0% {
+      text-shadow: 0 0 5px #f7c96d, 0 0 10px #f7c96d, 0 0 15px #f7c96d, 0 0 20px #f7c96d, 0 0 25px #ff00ff;
+    }
+    100% {
+      text-shadow: 0 0 10px #ff0800, 0 0 20px #ff0800, 0 0 30px #ff0800, 0 0 40px #ff0800, 0 0 50px #ff00ff;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .heading {
+      font-size: 28px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .heading {
+      font-size: 24px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .card {
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    /* margin: 2rem; */
+    margin :1rem;
+    margin-left: 7.5rem;
+    margin-bottom: 0;
+  }
+  
+  .form-group {
+    margin: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #6c63ff;
+  }
+  
+  .form-group .react-datepicker-wrapper {
+    width: 100%;
+  }
+  
+  .form-group .react-datepicker__input-container input {
+    border: none; /* Remove the outer border of the datepicker input */
+  }
+  
+  .form-check {
+    margin: 20px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #060e1b;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: #584fdc;
+  }
+  
+  @media (max-width: 576px) {
+    .card {
+      width: 100%;
+      margin: 20px;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    .card-title {
+      font-size: 20px;
+    }
+  
+    .form-group input {
+      padding: 8px;
+    }
+  
+    .btn-primary {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width : 100vw;
+    background-image: url('https://e0.pxfuel.com/wallpapers/934/924/desktop-wallpaper-airplane-macbook-best-flights-best-airlines-air-tickets-alaska-airlines.jpg');
+    background-size: cover;
+    /* background-image: url('https://media.istockphoto.com/id/506665554/photo/sunset-over-sea.webp?b=1&s=170667a&w=0&k=20&c=mJbXAe6Kiz_9__GkCyIpg-Dh84VUzeJwhcNXsKicfJU='); */
+    background-position: center;
+  }
+  
+  .card {
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    opacity: 0.75;
+  } 
