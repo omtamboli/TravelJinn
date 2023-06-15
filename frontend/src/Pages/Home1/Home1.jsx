@@ -34,8 +34,8 @@ function Home1() {
         <ParallaxLayer offset={0} speed={0.35}>
           <div className="animation_layer parallax" id="jungle5"></div>
         </ParallaxLayer>
-        <ParallaxLayer offset={1} speed={0.25}>
-          <TextBlock />
+        <ParallaxLayer offset={1} speed={0}>
+        <TextBlock />
         </ParallaxLayer>
       </Parallax>
     </div>
