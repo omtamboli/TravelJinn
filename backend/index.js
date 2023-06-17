@@ -1,14 +1,27 @@
 const axios = require("axios");
 const express = require("express");
 const bodyParser = require("body-parser");
-
-const app = express();
+const { config } = require("dotenv");
+import paymentRoute from "../backend/Routes/paymentRoutes.js";
+export const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(express.json());
 const corsOptions = {
   origin: "http://127.0.0.1:5173",
 };
+
+// payment gaateway
+
+config({ path: "./config/config.env" });
+
+app.use("/api", paymentRoute);
+
+app.get("/api/getkey", (req, res) =>
+  res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
+);
+
+
 app.use(cors(corsOptions));
 let store=1;
 // Set the request parameters
@@ -138,3 +151,8 @@ app.get("/endpoint", async (req, res) => {
 app.listen(5000, function () {
   console.log("Server Started On Port 5000");
 });
+
+
+
+//key id : rzp_test_wbDTAWXO1BlFlV
+// secret : Rmkm8yfOuMh9gGSfhZ5NFe4F
