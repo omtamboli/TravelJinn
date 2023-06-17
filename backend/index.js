@@ -65,7 +65,7 @@ app.get("/endpoint", async (req, res) => {
         },
       }
     );
-
+   
     const results2 = response2.data.features;
 
     for (let i = 0; i < results2.length; i++) {
