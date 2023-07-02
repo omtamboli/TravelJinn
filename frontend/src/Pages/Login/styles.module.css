@@ -1,0 +1,248 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Rest of the styles remain the same */
+  
+  .heading {
+    font-size: 40px;
+    font-weight: 600;
+    color: #2c444e;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .heading::after {
+    content: "";
+    width: 450px;
+    height: 4px;
+    border-radius: 1px;
+    bottom: -20px;
+    background-color: #2c444e;
+    position: absolute;
+  }
+  
+  .form_container {
+    display: flex;
+    margin-top: 45px;
+    width: 800px;
+    height: 450px;
+    background-color: white;
+    box-shadow: 3px 4px 36px -6px rgba(0, 0, 0, 0.4);
+    border-radius: 50px;
+  }
+  
+  .left {
+    flex: 1.5;
+    overflow: hidden;
+    position: relative;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+  
+  .img {
+    width: 160%;
+    position: absolute;
+    left: -150px;
+    top: -50px;
+  }
+  
+  .right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .from_heading {
+    font-size: 25px;
+    font-weight: 400;
+    color: #2c444e;
+    margin-bottom: 30px;
+  }
+  
+  .input {
+    width: 320px;
+    height: 35px;
+    padding: 5px;
+    margin: 5px 0;
+    outline: none;
+    border: 1px solid #2c444e;
+    border-radius: 2px;
+    font-size: 13px;
+  }
+  
+  .btn {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 25px;
+    color: white;
+    background-color: #ffc801;
+    border-radius: 12px;
+    margin: 10px 0 0 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .text {
+    font-size: 14px;
+    color: #2c444e;
+    margin: 5px 0;
+    padding: 0;
+  }
+  
+  .text > a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffc801;
+  }
+  
+  .google_btn {
+    width: 230px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    color: #2c444e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .google_btn > img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+  
+  .google_btn > span {
+    margin-left: 10px;
+  }
+  
+  /* Media Queries */
+  
+  @media (max-width: 1024px) {
+    .form_container {
+      width: 600px;
+      height: auto;
+      flex-direction: column;
+    }
+    
+    .left {
+      flex: none;
+      border-radius: 0;
+    }
+    
+    .img {
+      display: none;
+    }
+    
+    .right {
+      flex: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .form_container {
+      width: 400px;
+    }
+    
+    .from_heading {
+      font-size: 20px;
+    }
+    
+    .input {
+      width: 280px;
+    }
+    
+    .btn {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+    
+    .text > a {
+      font-size: 14px;
+    }
+    
+    .google_btn {
+      width: 200px;
+      height: 35px;
+      font-size: 14px;
+    }
+    
+    .google_btn > img {
+      width: 25px;
+      height: 25px;
+    }
+    
+    .google_btn > span {
+      margin-left: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+    
+    .form_container {
+      width: 300px;
+    }
+    
+    .heading {
+      font-size: 30px;
+    }
+    
+    .heading::after {
+      width: 300px;
+      bottom: -15px;
+    }
+    
+    .from_heading {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    
+    .input {
+      width: 250px;
+    }
+    
+    .btn {
+      font-size: 14px;
+      padding: 8px 18px;
+    }
+    
+    .text > a {
+      font-size: 12px;
+    }
+    
+    .google_btn {
+      width: 180px;
+      height: 30px;
+      font-size: 12px;
+    }
+    
+    .google_btn > img {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .google_btn > span {
+      margin-left: 3px;
+    }
+  }
+  

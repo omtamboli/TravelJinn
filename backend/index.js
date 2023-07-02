@@ -2,24 +2,57 @@ const axios = require("axios");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { config } = require("dotenv");
-import paymentRoute from "../backend/Routes/paymentRoutes.js";
-export const app = express();
+// const paymentRoute = require('../backend/Routes/paymentRoutes')
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(express.json());
 const corsOptions = {
   origin: "http://127.0.0.1:5173",
 };
+require("dotenv").config();
+const passport = require('passport');
+console.log("My name");
+const authRoute = require("../backend/Routes/auth.js");
+const cookieSession = require("cookie-session");
+const session = require('express-session');
+const mongoose = require("mongoose");
+const {connectDB}=require('../backend/Config/database.js');
 
-// payment gaateway
+connectDB();
+const passportSetup = require("./passport.js");
+const feedbackdetails = require("../backend/Model/Feedbackuser.js");
+
+app.use(
+	cookieSession({
+		name: "session",
+		keys: ["cyberwolve"],
+		maxAge: 24 * 60 * 60 * 100,
+	})
+);
+
+app.use(session({
+  secret: 'key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize(passportSetup));
+app.use(passport.session());
+
+app.use(
+	cors({
+		origin: "http://127.0.0.1:5173",
+		credentials: true,
+	})
+);
+
+
+
+app.use("/auth", authRoute);
+
 
 config({ path: "./config/config.env" });
-
-app.use("/api", paymentRoute);
-
-app.get("/api/getkey", (req, res) =>
-  res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
-);
 
 
 app.use(cors(corsOptions));
@@ -32,6 +65,35 @@ app.post("/endpoint", (req, res) => {
   place = req.body.value;
   res.json({ message: "Message received successfully" });
 });
+
+// app.post("/feedback",function(req,res){
+//   console.log(req.body.value);
+//   try {
+//     res.send({ message: "Query Submitted" });
+//   } catch (error) {
+//     // Send an error response
+//     res.status(500).send({ error: "Internal Server Error" });
+//   }
+  
+// })
+
+app.post("/feedback",function(req,res){
+  const {name,email,feedback}=req.body.value;
+  const feedbackuser=new feedbackdetails({
+      name,
+      email,
+      feedback
+  })
+  // console.log(req.body);
+  
+  feedbackuser.save();
+  try {
+    res.send({ message: "Query Submitted" });
+  } catch (error) {
+    // Send an error response
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+})
 
 app.get("/endpoint", async (req, res) => {
   try {
@@ -72,7 +134,7 @@ app.get("/endpoint", async (req, res) => {
           radius: radius,
           lon: longitude,
           lat: latitude,
-          limit: 15,
+          limit: 25,
           rate: 3,
           k: "tourist_attraction",
         },

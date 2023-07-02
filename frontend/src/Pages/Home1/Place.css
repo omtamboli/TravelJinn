@@ -1,7 +1,7 @@
 
 
 .clubsboxes{
-    margin: 40px;
+    margin: 60px;
 }
 div.col-lg-4{
     margin-top:20px;
@@ -9,9 +9,11 @@ div.col-lg-4{
 }
 
 div.col-lg-4:hover {
-    transform: scale(1.2) translateX(5px);
+    transform: scale(1) translateX(5px);
   }
-
+  div.col-lg-4 {
+    transform: scale(0.8) translateX(5px);
+  }
 .container-fluid.clubcolor {
     position: relative;
   }

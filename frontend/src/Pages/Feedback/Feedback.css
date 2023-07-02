@@ -1,0 +1,16 @@
+.contactcolor{
+    background-image: url('https://unsplash.imgix.net/44/C3EWdWzT8imxs0fKeKoC_blackforrest.JPG?q=75&fm=jpg&auto=format&s=986aaa92169d4e97975fa66ebd60bafd');
+    background-repeat: repeat-y;
+  }
+  div.contact-top.contactcolor{
+    margin-top:70px;
+  }
+button.btn.btn-primary.feedback{
+    text-align: center;
+    width: 100px; 
+    margin:20px;
+    margin-bottom:700px;
+}
+form.feedback{
+    margin-top:300px;
+}
