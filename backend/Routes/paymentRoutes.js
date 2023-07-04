@@ -1,8 +1,8 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   checkout,
   paymentVerification,
-} from "../controllers/paymentController.js";
+} = require('../Controller/paymentController');
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ router.route("/checkout").post(checkout);
 
 router.route("/paymentverification").post(paymentVerification);
 
-export default router;
+module.exports = router;

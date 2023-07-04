@@ -2,14 +2,33 @@ const axios = require("axios");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { config } = require("dotenv");
-import paymentRoute from "../backend/Routes/paymentRoutes.js";
-export const app = express();
+const paymentRoute = require("../backend/Routes/paymentRoutes.js");
+ const app = express();
+
+ const Razorpay = require("razorpay");
+const { connectDB } = require('../backend/Config/database.js');
 app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(express.json());
 const corsOptions = {
   origin: "http://127.0.0.1:5173",
 };
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://127.0.0.1:5173'); 
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+
+//mongo  for razorpay
+
+connectDB();
+
+const instance = new Razorpay({
+  key_id: "rzp_test_wbDTAWXO1BlFlV",
+  key_secret:"Rmkm8yfOuMh9gGSfhZ5NFe4F",
+});
 
 // payment gaateway
 
@@ -18,7 +37,7 @@ config({ path: "./config/config.env" });
 app.use("/api", paymentRoute);
 
 app.get("/api/getkey", (req, res) =>
-  res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
+  res.status(200).json({ key: "process.env.RAZORPAY_API_KEY" })
 );
 
 
@@ -152,7 +171,5 @@ app.listen(5000, function () {
   console.log("Server Started On Port 5000");
 });
 
-
-
-//key id : rzp_test_wbDTAWXO1BlFlV
-// secret : Rmkm8yfOuMh9gGSfhZ5NFe4F
+module.exports = app;
+module.exports.instance = instance;

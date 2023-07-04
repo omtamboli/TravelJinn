@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import AskOurExperts from './Pages/AskOurExperts/AskOurExperts';
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
             <Route path="/flightbook" element={<FlightBooking />} />
             <Route path="/" element={<Home />} />
             <Route path="/places" element={<Place />} />
+            <Route path="/askourexperts" element={<AskOurExperts />} />
           </Routes>
         </Router>
       </div>
