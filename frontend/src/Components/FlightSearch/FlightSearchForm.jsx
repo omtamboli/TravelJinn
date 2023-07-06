@@ -56,9 +56,9 @@ const handleSearch = async () => {
   return (
     <>
    
-    <div className="container">
+    <div className="container flyt">
     <Navigationbar />
-    <h1 className="heading">Select the affordable flights with us!</h1>
+    <h1 className="heading">Search the affordable flights with us!</h1>
       <div className="row justify-content-center">
         <div className="col-lg-6 col-md-8">
           <div className="card mt-4">

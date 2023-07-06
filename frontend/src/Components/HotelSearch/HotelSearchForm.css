@@ -133,20 +133,19 @@ form {
   }
   
   .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width : 100vw;
-    background-size: cover;
-    /* background-image: url('https://media.istockphoto.com/id/506665554/photo/sunset-over-sea.webp?b=1&s=170667a&w=0&k=20&c=mJbXAe6Kiz_9__GkCyIpg-Dh84VUzeJwhcNXsKicfJU='); */
-    background-position: center;
-  }
-
-  .flyt{
-    background-image: url('../../images/airplane.jpg');
+    margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 99vw;
+  background-position: center;
   }
   
+.hotel{
+  background-image: url('../../images/HotelTaj.jpg');
+}
+
   .card {
     width: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -155,3 +154,15 @@ form {
     background-color: #fff;
     opacity: 0.75;
   } 
+  .down{
+    margin-top: 0px;
+  }
+  div.card.mt-4{
+    margin-right:350px;
+  }
+  
+@media (max-width: 768px) {
+  div.card.mt-4 {
+    margin-right: 25px;
+  }
+}

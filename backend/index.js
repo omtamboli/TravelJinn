@@ -2,11 +2,13 @@ const axios = require("axios");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { config } = require("dotenv");
-const paymentRoute = require("../backend/Routes/paymentRoutes.js");
+const paymentRoute = require("../backend/Routes/payment.js");
  const app = express();
-
+ config({ path: "./config/config.env" });
+const Payment = require('../backend/Model/paymentModel.js');
  const Razorpay = require("razorpay");
 const { connectDB } = require('../backend/Config/database.js');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 app.use(express.json());
@@ -21,24 +23,42 @@ app.use((req, res, next) => {
 });
 
 
+//route for razor
+app.use("/api/payment" , paymentRoute);
+
 //mongo  for razorpay
 
 connectDB();
 
-const instance = new Razorpay({
-  key_id: "rzp_test_wbDTAWXO1BlFlV",
-  key_secret:"Rmkm8yfOuMh9gGSfhZ5NFe4F",
-});
+require("dotenv").config();
+const passport = require('passport');
+const authRoute = require("../backend/Routes/auth.js");
+const cookieSession = require("cookie-session");
+const session = require('express-session');
+const mongoose = require("mongoose");
+const passportSetup = require("./passport.js");
+const feedbackdetails = require("../backend/Model/Feedbackuser.js");
 
-// payment gaateway
-
-config({ path: "./config/config.env" });
-
-app.use("/api", paymentRoute);
-
-app.get("/api/getkey", (req, res) =>
-  res.status(200).json({ key: "process.env.RAZORPAY_API_KEY" })
+app.use(
+	cookieSession({
+		name: "session",
+		keys: ["cyberwolve"],
+		maxAge: 24 * 60 * 60 * 100,
+	})
 );
+
+app.use(session({
+  secret: 'key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize(passportSetup));
+app.use(passport.session());
+
+
+
+app.use("/auth", authRoute);
 
 
 app.use(cors(corsOptions));
@@ -51,6 +71,50 @@ app.post("/endpoint", (req, res) => {
   place = req.body.value;
   res.json({ message: "Message received successfully" });
 });
+
+
+
+app.post("/feedback",function(req,res){
+  const {name,email,feedback}=req.body.value;
+  const feedbackuser=new feedbackdetails({
+      name,
+      email,
+      feedback
+  })
+ 
+  
+  feedbackuser.save();
+  try {
+    res.send({ message: "Feedback Submitted Successfully" });
+  } catch (error) {
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+})
+
+app.post('/api/payment/save', async (req, res) => {
+  try {
+    const { paymentId, amount, currency, name, email } = req.body;
+
+    console.log(paymentId , amount , name , email)
+    // Create a new payment document
+    const payment = new Payment({
+      paymentId,
+      amount,
+      currency,
+      name,
+      email,
+    });
+
+    // Save the payment document to the database
+    await payment.save();
+
+    // Send a success response
+    res.status(200).json({ message: 'Payment details saved successfully' });
+  } catch (error) {
+    console.log(error);
+    // Send an error response
+    res.status(500).json({ error: 'An error occurred while saving payment details' });
+  }});
 
 app.get("/endpoint", async (req, res) => {
   try {
@@ -91,13 +155,13 @@ app.get("/endpoint", async (req, res) => {
           radius: radius,
           lon: longitude,
           lat: latitude,
-          limit: 15,
+          limit: 25,
           rate: 3,
           k: "tourist_attraction",
         },
       }
     );
-
+   
     const results2 = response2.data.features;
 
     for (let i = 0; i < results2.length; i++) {
@@ -127,10 +191,9 @@ app.get("/endpoint", async (req, res) => {
       const pageId = Object.keys(pages)[0];
       const extract = pages[pageId].extract;
 
-      // Extract approximately 50 words from the summary
+      
       if(extract){
       const fiftyWords = extract.split(" ").slice(0, 50).join(" ");
-      // Store place description
       placeData.description = fiftyWords;
       }
       
@@ -172,4 +235,4 @@ app.listen(5000, function () {
 });
 
 module.exports = app;
-module.exports.instance = instance;
+// module.exports.instance = instance;

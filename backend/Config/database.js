@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 exports.connectDB = async () => {
-  const { connection } = await mongoose.connect("mongodb://localhost:27017/razor");
-  console.log(`Mongodb is connected with ${connection.host}`);
+  await mongoose.connect("mongodb+srv://gauravahuja1213:G6KxJkczz9XGEgEk@cluster0.hlektms.mongodb.net/logindb",{ useNewUrlParser : true});
+  console.log("Connected to MongoDB");
 };
+

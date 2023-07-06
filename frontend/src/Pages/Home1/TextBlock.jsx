@@ -21,10 +21,10 @@ function TextBlock() {
 
   function handleClick(event) {    
     event.preventDefault();
-    dest=user.name;
+    dest=user.name+ ",India";
     console.log(user.name);
     axios
-      .post("http://localhost:5000/endpoint", { value: user.name })
+      .post("http://localhost:5000/endpoint", { value: user.name + ",India" })
       .then((response) => {
         console.log("Response from backend:", response.data.message);
         navigate("/places"); // Redirect to "/places" page
@@ -68,7 +68,7 @@ function TextBlock() {
           <br></br>
           <br></br>
           You can explore various tourist places, book flights, leave reviews,
-          and seek guidance from travel experts. Just put the place you want to visit in the below format . Ex: Pune, Maharashtra,India. or Mumbai, Maharashtra, India
+          and seek guidance from travel experts. Just search the place you want to visit in above search bar.
         </p>
       </div>
       <footer id="textblock-footer">
