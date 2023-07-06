@@ -7,16 +7,18 @@ TravelJinn is a web application that aims to provide users with tourist destinat
 
 - **Tourist Place Suggestions:** Explore a curated list of popular tourist destinations with detailed information about attractions, accommodations, local cuisine, and travel tips.
 
-- **Flight Booking:** Search for flights, view available options, compare prices, and make bookings directly through the platform.
+- **Flight Searching:** Search for flights, view available options, compare prices, and make bookings directly through the platform.
 
 - **User Reviews:** Leave reviews and ratings for visited tourist places to help others in making informed travel decisions.
 
-- **Expert Advice:** Connect with travel experts, ask questions, and get personalized recommendations for travel itineraries.
+- **Ask Our Experts:** Connect with travel experts, ask questions, and get personalized recommendations for travel itineraries.
+  
+- **ChatBot:** Added Chatbot functionality for the user to use the website with ease.
 
 ## Technologies Used
 
 - Front-end: React.js
-- Back-end: Node.js, Express.js
+- Back-end: Node.js, Express.js, Passport.js , razorpay integration
 - Database: MongoDB
 
 ## Contact
