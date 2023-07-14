@@ -17,9 +17,9 @@ function Profile() {
 
  //   const navigate=useNavigate();
 //   const [user, setUser] = useState(null);
-  const logout = () => {
-    window.open(`http://localhost:5000/auth/logout`, "_self");
-};
+//   const logout = () => {
+//     window.open(`http://localhost:5000/auth/logout`, "_self");
+// };
 
 
 // useEffect(() => {
@@ -73,9 +73,9 @@ console.log("789");
           </button> */}
           <a href="/flightbook" className={styles.btn} >Flight Book</a>
           <a href="/hotelbook" className={styles.btn} >Hotel Book</a>
-          <button className={styles.btn} onClick={logout}>
+          {/* <button className={styles.btn} onClick={logout}>
             Logout
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

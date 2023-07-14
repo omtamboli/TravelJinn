@@ -100,8 +100,9 @@ const AskOurExperts = () => {
           <p>Our experts are ready to assist you in planning your dream journey</p>
           <p>Get personalized recommendations, itinerary suggestions, and more</p>
         </div>
-        <form>
+        <form className="ask">
           <input
+           className="askour"
             type="text"
             name="name"
             placeholder="Name"
@@ -110,6 +111,7 @@ const AskOurExperts = () => {
             onChange={handleInputChange}
           />
           <input
+          className="askour"
             type="email"
             name="email"
             placeholder="Email"

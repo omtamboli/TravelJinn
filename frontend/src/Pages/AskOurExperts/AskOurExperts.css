@@ -38,13 +38,13 @@
 	margin-bottom: 20px;
 }
 
-form {
+.ask {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-form input {
+.askour {
 	width: 300px;
 	padding: 10px;
 	margin-bottom: 10px;
